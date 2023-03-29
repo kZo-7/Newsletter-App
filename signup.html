@@ -16,6 +16,7 @@
         integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 
     <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="images/favicon/favicon.ico">
 
     <!-- <style>
         .bd-placeholder-img {
@@ -103,22 +104,22 @@
 <body class="text-center">
 
     <main class="form-signin w-100 m-auto">
-        <form>
-            <img class="mb-4" src="images/sourdough2-logo.png" alt="" width="220" height="220">
+        <form action="/" method="post">
+            <img class="mb-4" src="images/sourdough2-logo.png" alt="" width="120" height="120">
             <h1>Sign Up to My Newsletter</h1>
 
             <div class="form-floating">
-                <input type="text" class="form-control top" placeholder="eg. Mustafa" minlength="2" maxlength="14"
+                <input type="text" class="form-control top" placeholder="eg. Mustafa" name="firstName" minlength="2" maxlength="14"
                     required>
                 <label for="FirstName">First Name</label>
             </div>
             <div class="form-floating">
-                <input type="text" class="form-control middle" placeholder="eg. Payton" minlength="3" maxlength="14"
+                <input type="text" class="form-control middle" placeholder="eg. Payton" name="lastName" minlength="3" maxlength="14"
                     required>
                 <label for="LastName">Last Name</label>
             </div>
             <div class="form-floating">
-                <input type="email" class="form-control" placeholder="@email" required>
+                <input type="email" class="form-control" placeholder="@email" name="email" required>
                 <label for="Email">Email</label>
             </div>
             <br>
