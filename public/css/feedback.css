@@ -1,0 +1,118 @@
+:root {
+    --borderClr: rgba(255, 193, 7, 0.8);
+    --feedbackBGClr: #9a9a9a;
+    --textClr: rgba(22, 22, 22, 0.85);
+    --fontText: "Montserrat", sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: var(--fontText);
+    color: var(--textClr);
+}
+
+img {
+    padding-top: 75px;
+}
+
+.main {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: auto;
+}
+
+.main .main-container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    max-width: 100vw;
+}
+
+.main .main-container .main-container-inner {
+    max-width: 400px;
+}
+
+@media screen and (min-width: 550px) {
+    .main .main-container .main-container-inner {
+        box-sizing: border-box;
+        display: flex;
+        margin: 0;
+        padding: 10px;
+        width: 100vw;
+        max-width: 550px;
+        position: relative;
+    }
+}
+
+.main .main-container .main-container-inner ._inner-container {
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    padding: 15px;
+    overflow: hidden;
+    z-index: 2;
+}
+
+main.mainSection {
+    background-color: var(--feedbackBGClr);
+    border: solid var(--borderClr) 2px;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px;
+    height: 100%;
+    min-height: 100%;
+}
+
+main.mainSection form.mainSection-form {
+    align-self: center;
+}
+
+@media screen and (min-width: 550px) {
+    main.mainSection form.mainSection-form {
+        position: relative;
+        align-self: flex-end;
+    }
+}
+
+button.mainSection-form_btn {
+    display: inline-block;
+    padding: 0.4em 1.45em;
+    margin: 0.2em;
+    border: 0.1em solid var(--borderClr);
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    background-color: rgba(255, 193, 7, 0.8);
+    text-align: center;
+    position: relative;
+    transition: all 0.15s;
+    cursor: pointer;
+}
+
+button.mainSection-form_btn:hover {
+    background-color:var(--feedbackBGClr);
+    color: #FFC107;
+}
+
+p.footer {
+    display: inline-block;
+    font-size: 14px;
+    padding: 5px;
+    position: relative;
+    text-align: center;
+    opacity: 80%;
+}
