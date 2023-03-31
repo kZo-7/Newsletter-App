@@ -2,8 +2,8 @@ const express = require("express");
 //const axios = require("axios");
 const bodyParser = require("body-parser");
 const https = require("https");
-const { response } = require("express");
 
+const PORT = process.env.port || 3000;
 const app = express();
 
 //allows us to send our data over to our servers
@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded(
 ));
 // inside public we have all static files (imgs, .css etc.)
 app.use(express.static("public"));
+
 
 //setting up our requests and responses to the GET request on "/" route
 app.get("/", function (req, res) {
@@ -38,8 +39,7 @@ app.post("/", function (req, res) {
             }
         ]
     };
-    //turn the above JS object (data) into a flat string JSON
-    //this is what we are going to send to mailchimp
+    //turn the above JS object (data) into a flat string JSON (this is what we are going to send to mailchimp)
     var jsonData = JSON.stringify(data);
 
     const user = "us21";
@@ -63,7 +63,7 @@ app.post("/", function (req, res) {
 
         console.log("[Into https.request] -> response.statusCode : " + response.statusCode);
         response.on("data", function (data) {
-        //console.log("JSON.parse(data) = " + JSON.parse(data));
+        console.log("JSON.parse(data) = " + JSON.parse(data));
         })
     });
 
@@ -81,6 +81,6 @@ app.post("/success", function (req, res) {
     res.redirect("/");
 });
 
-app.listen(process.env.PORT || 3000, function () {
+app.listen(PORT, function () {
     console.log(`Server is running at port 3000.`);
 });
