@@ -2,7 +2,7 @@ const express = require("express");
 //const axios = require("axios");
 const bodyParser = require("body-parser");
 const https = require("https");
-//const { env } = require("process");
+
 require("dotenv").config(
     {
         path:__dirname + '/.env'
@@ -54,24 +54,23 @@ app.post("/", function (req, res) {
     const apiKey = process.env.API_KEY;
     const options = {
         method: "POST",
-        auth: apiKey
+        auth: `Sourdough:${process.env.API_KEY}`
     }
+    console.log("Api key = " + JSON.stringify(apiKey));
 
     //we are calling https.request() method to POST our data and see the response from mailchimp server
     const request = https.request(url, options, function (response) {
         console.log("Status Code : " + response.statusCode);
+        console.log("options : " + JSON.stringify(options.auth));
         if (response.statusCode == 200) {
-            console.log(`Successful subscription! Status Code = ${response.statusCode}`);
-            //res.send(`Successful subscription! Status Code = ${response.statusCode}`);
             res.sendFile(__dirname + "/success.html");
         } else {
-            console.log("There was an error with signing up, please try again.");
             res.sendFile(__dirname + "/failure.html");
         }
 
         console.log("[Into https.request] -> response.statusCode : " + response.statusCode);
         response.on("data", function (data) {
-        console.log("JSON.parse(data) = " + JSON.parse(data));
+        // console.log("JSON.parse(data) = " + JSON.parse(data));
         })
     });
 
@@ -90,5 +89,5 @@ app.post("/success", function (req, res) {
 });
 
 app.listen(PORT, function () {
-    console.log(`Server is running at port 3000.`);
+    console.log(`Server is running at port ${PORT}.`);
 });
