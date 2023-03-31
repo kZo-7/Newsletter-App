@@ -20,8 +20,9 @@ body {
 
 h1 {
   font-family: "Montserrat", sans-serif;
-  font-weight: 400;
+  font-weight: 800;
   font-size: 1.4rem;  
+  padding: 18px 0;
 }
 
 p.footer {
@@ -54,8 +55,7 @@ p.footer {
 }
 
 .form-signin input[type="email"] {
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
-

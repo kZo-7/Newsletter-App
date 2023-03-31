@@ -1,6 +1,6 @@
 :root {
     --borderClr: rgba(255, 193, 7, 0.8);
-    --feedbackBGClr: #9a9a9a;
+    --feedbackBGClr: #ababab;
     --textClr: rgba(22, 22, 22, 0.85);
     --fontText: "Montserrat", sans-serif;
 }

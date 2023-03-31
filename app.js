@@ -2,8 +2,14 @@ const express = require("express");
 //const axios = require("axios");
 const bodyParser = require("body-parser");
 const https = require("https");
+//const { env } = require("process");
+require("dotenv").config(
+    {
+        path:__dirname + '/.env'
+    }
+);
 
-const PORT = process.env.port || 3000;
+const PORT = process.env.port || process.env.DEV_PORT;
 const app = express();
 
 //allows us to send our data over to our servers
@@ -45,13 +51,15 @@ app.post("/", function (req, res) {
     const user = "us21";
     const listID = "ad0c891c0d";
     const url = `https://${user}.api.mailchimp.com/3.0/lists/${listID}`;
-
+    const apiKey = process.env.API_KEY;
     const options = {
         method: "POST",
-        auth: "kiZo:9b3299aebe5f95c9cd7c6244cacb6afd-us21"
+        auth: apiKey
     }
+
     //we are calling https.request() method to POST our data and see the response from mailchimp server
     const request = https.request(url, options, function (response) {
+        console.log("Status Code : " + response.statusCode);
         if (response.statusCode == 200) {
             console.log(`Successful subscription! Status Code = ${response.statusCode}`);
             //res.send(`Successful subscription! Status Code = ${response.statusCode}`);
