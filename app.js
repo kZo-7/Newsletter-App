@@ -1,6 +1,7 @@
 const express = require("express");
 //const axios = require("axios");
 const bodyParser = require("body-parser");
+const request = require("request");
 const https = require("https");
 
 require("dotenv").config(
@@ -9,7 +10,7 @@ require("dotenv").config(
     }
 );
 
-const PORT = process.env.port || process.env.DEV_PORT;
+const port = process.env.PORT || process.env.DEV_PORT;
 const app = express();
 
 //allows us to send our data over to our servers
@@ -56,7 +57,6 @@ app.post("/", function (req, res) {
         method: "POST",
         auth: `Sourdough:${apiKey}`
     }
-    console.log("Api key = " + apiKey);
 
     //we are calling https.request() method to POST our data and see the response from mailchimp server
     const request = https.request(url, options, function (response) {
@@ -87,6 +87,6 @@ app.post("/success", function (req, res) {
     res.redirect("/");
 });
 
-app.listen(PORT, function () {
-    console.log(`Server is running at port ${JSON.stringify(PORT)}.`);
+app.listen(port, function () {
+    console.log(`Server is running at port ${port}.`);
 });
