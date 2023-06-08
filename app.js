@@ -3,24 +3,25 @@ const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https");
 
-const app = express();
-const port = process.env.PORT || process.env.DEV_PORT;
-
-//in order for our server to serve up static files we need to use the below function
-//"express.static()" where we define our public folder
-app.use(express.static("public"));
-
-//allows us to send our data over to our servers
-app.use(bodyParser.urlencoded(
-    { extended: true }
-));
-
 //we have to hide API keys to a hidden file to be safe
 require("dotenv").config(
     {
         path:__dirname + '/.env'
     }
 );
+
+const app = express();
+const port = process.env.PORT || process.env.DEV_PORT;
+
+//allows us to send our data over to our servers
+app.use(bodyParser.urlencoded(
+    { extended: true }
+));
+
+//in order for our server to serve up static files we need to use the below function
+//"express.static()" where we define our public folder
+app.use(express.static("public"));
+
 
 //setting up our requests and responses to the GET request on "/" route
 app.get("/", function (req, res) {
