@@ -1,9 +1,18 @@
 const express = require("express");
-//const axios = require("axios");
 const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https");
 
+//allows us to send our data over to our servers
+app.use(bodyParser.urlencoded(
+    { extended: true }
+));
+
+//in order for our server to serve up static files we need to use the below function
+//"express.static()" where we define our public folder
+app.use(express.static("public"));
+
+//
 require("dotenv").config(
     {
         path:__dirname + '/.env'
@@ -12,14 +21,6 @@ require("dotenv").config(
 
 const port = process.env.PORT || process.env.DEV_PORT;
 const app = express();
-
-//allows us to send our data over to our servers
-app.use(bodyParser.urlencoded(
-    { extended: true }
-));
-// inside public we have all static files (imgs, .css etc.)
-app.use(express.static("public"));
-
 
 //setting up our requests and responses to the GET request on "/" route
 app.get("/", function (req, res) {
@@ -32,7 +33,7 @@ app.post("/", function (req, res) {
     const lastName = req.body.lastName;
     const email = req.body.email;
 
-    //crete our data we want to POST as a JSON
+    //create our data we want to POST as a JSON
     var data = {
         //we have only one object on our array because we want to ubscribe one person at a time
         members: [
